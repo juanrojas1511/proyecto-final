@@ -8,4 +8,25 @@ internal class Pantallas
         public static float[] cantidad = new float[500];
         public static int contador_produc = 0;
         public static int contador_alm = 0;
+
+         static void Main(string[] args)
+        {
+            int opcion;
+            do
+            {
+                opcion = inventario_tienda();
+                switch (opcion)
+                {
+                    case 1:
+                        gestionar_productos();
+                        break;
+                    case 2:
+                        gestionar_alamacenes();
+                        break;
+                    case 3:
+                        Agregar_Extraer_Productos();
+                        break;
+                }
+            } while (opcion != 4);
+        }
 }
