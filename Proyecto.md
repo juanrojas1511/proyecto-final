@@ -239,3 +239,61 @@ public static void gestionar_almacenes()
     }
     Console.ReadLine();
 }
+public static int Agregar_Extraer_Productos()
+{
+    Console.Clear();
+    Console.WriteLine("-----------------------------------------------------");
+    Console.WriteLine("    Agregar y Extraer Productos - Mi Tiendita    ");
+    Console.WriteLine("-----------------------------------------------------");
+    Console.WriteLine(" || 1. Ingresar Producto en Almacén ||               ");
+    Console.WriteLine(" || 2. Extraer Producto de Almacén  ||               ");
+    Console.WriteLine(" || 3. Ver Stock Actual             ||               ");
+    Console.WriteLine(" || 4. Volver al Menú Principal     ||               ");
+    Console.WriteLine("-----------------------------------------------------");
+    int opcion = Operaciones.getEntero("Ingrese una opción: ");
+    switch (opcion)
+    {
+        case 1:
+            Console.Clear();
+            Console.WriteLine("==== Pantalla para Ingresar Producto en Almacén ====");
+            Console.WriteLine("-----------------------------------------------------");
+            Console.WriteLine("Lista de Almacenes:");
+            for (int i = 0; i < contador_alm; i++)
+            {
+                Console.WriteLine($"{i + 1}. {nom_alamcen[i]}");
+            }
+
+            Console.WriteLine("-----------------------------------------------------");
+            int numeroAlmacen = Operaciones.getEntero("Seleccione el almacén:");
+            int indiceAlmacen = numeroAlmacen - 1;
+            Console.WriteLine("Lista de Productos:");
+            for (int i = 0; i < contador_produc; i++)
+            {
+                Console.WriteLine($"{i + 1}. {nom_produc[i]}");
+            }
+            Console.WriteLine("-----------------------------------------------------");
+            int numeroProducto = Operaciones.getEntero("Seleccione el producto a ingresar:");
+            int indiceProducto = numeroProducto - 1;
+            float cantidadIngresar = Operaciones.getDecimal("Ingrese la cantidad a ingresar:");
+            cantidad[indiceProducto] -= cantidadIngresar;
+            Console.WriteLine("-----------------------------------------------------");
+            Console.WriteLine("Confirmación: Producto ingresado en el almacén exitosamente.");
+            Console.WriteLine("1. Volver al Menú Principal");
+            Console.ReadLine();
+            break;
+
+
+        case 2:
+            Console.Clear();
+            Console.WriteLine("==== Pantalla para Extraer Producto de Almacén ====");
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("Lista de Almacenes:");
+            for (int i = 0; i < contador_alm; i++)
+            {
+                Console.WriteLine($"{i + 1}. {nom_alamcen[i]}");
+            }
+            Console.WriteLine("-----------------------------------------------------");
+            int numeroAlmacen_extraer = Operaciones.getEntero("Seleccione el almacén:");
+            int indiceAlmacen_extraer = numeroAlmacen_extraer - 1;
+            Console.WriteLine("-----------------------------------------------------");
+            Console.WriteLine($"Productos en {nom_alm[indiceAlmacen_extraer]}:");
