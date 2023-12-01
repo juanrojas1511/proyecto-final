@@ -165,3 +165,77 @@ case 5:
         }
         Console.ReadLine();
 }
+
+public static void gestionar_almacenes()
+{
+    Console.Clear();
+    Console.WriteLine("-----------------------------------------------------");
+    Console.WriteLine("||       Gestionar Almacenes - Mi Tiendita         ||");
+    Console.WriteLine("-----------------------------------------------------");
+    Console.WriteLine("|| 1. Agregar Almacén                              ||");
+    Console.WriteLine("|| 2. Eliminar Almacén                             ||");
+    Console.WriteLine("|| 3. Mostrar Almacenes                            ||");
+    Console.WriteLine("|| 4. Volver al Menú Principal                     ||");
+    Console.WriteLine("-----------------------------------------------------");
+    int opcion = Operaciones.getEntero("Ingresa una opción:");
+
+    switch (opcion)
+    {
+        case 1:
+            Console.Clear();
+            Console.WriteLine("==== Pantalla para Agregar Almacén ====");
+            Console.WriteLine("----------------------------------------");
+            string nombre_almacen = Operaciones.getTextoPantalla("Ingrese el nombre del nuevo almacén:");
+            nom_alamcen[contador_alm] = nombre_almacen;
+            contador_alm++;
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("Confirmación: Almacén agregado exitosamente.");
+            Console.WriteLine("1. Volver al Menú Principal");
+            break;
+
+        case 2:
+            Console.Clear();
+            Console.WriteLine("==== Pantalla para Eliminar Almacén ====");
+            Console.WriteLine("-----------------------------------------");
+            string eliminar_almacen = Operaciones.getTextoPantalla("Ingrese el nombre del almacén a eliminar:");
+            int indice_eliminar = -1;
+            for (int i = 0; i < contador_alm; i++)
+            {
+                if (nom_alamcen[i] == eliminar_almacen)
+                {
+                    indice_eliminar = i;
+                }
+            }
+            if (indice_eliminar != -1)
+            {
+                Console.WriteLine($"Almacén encontrado:{nom_alamcen[indice_eliminar]}");
+                for (int i = indice_eliminar; i < contador_alm - 1; i++)
+                {
+                    nom_alamcen[i] = nom_alamcen[i + 1];
+                }
+                contador_alm--;
+                Console.WriteLine("----------------------------------------");
+                Console.WriteLine("Confirmación: Almacén eliminado exitosamente.");
+            }
+            Console.WriteLine("Presione Enter para continuar...");
+            Console.ReadLine();
+            Console.WriteLine("1. Volver al Menú Principal");
+            break;
+
+        case 3:
+            Console.Clear();
+            Console.WriteLine("==== Pantalla para Mostrar Almacenes ====");
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("Lista de Almacenes:");
+            for (int i = 0; i < contador_alm; i++)
+            {
+                Console.WriteLine($"Almacén {i + 1}: {nom_alamcen[i]}");
+            }
+            Console.WriteLine("...");
+            break;
+
+        case 4:
+            break;
+    }
+    Console.ReadLine();
+}
