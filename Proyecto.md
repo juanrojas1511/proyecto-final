@@ -297,3 +297,48 @@ public static int Agregar_Extraer_Productos()
             int indiceAlmacen_extraer = numeroAlmacen_extraer - 1;
             Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine($"Productos en {nom_alm[indiceAlmacen_extraer]}:");
+            for (int i = 0; i < contador_produc; i++)
+                    {
+                        Console.WriteLine($"{i + 1}. {nom_produc[i]} - Cantidad: {cantidad[i]}");
+                    }
+                    Console.WriteLine("-----------------------------------------------------");
+                    int numeroProductoExtraer = Operaciones.getEntero("Seleccione el producto a extraer:");
+                    int indiceProductoExtraer = numeroProductoExtraer - 1;
+                    float cantidadExtraer = Operaciones.getDecimal("Ingrese la cantidad a extraer:");
+                    if (cantidadExtraer > 0 && cantidadExtraer <= cantidad[indiceProductoExtraer])
+                    {
+                        cantidad[indiceProductoExtraer] -= cantidadExtraer;
+                        Console.WriteLine("-----------------------------------------------------");
+                        Console.WriteLine("Confirmación: Producto extraído del almacén exitosamente.");
+                        Console.WriteLine("1. Volver al Menú Principal");
+                        Console.ReadLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: La cantidad a extraer debe ser mayor que cero y no puede ser mayor que la cantidad disponible.");
+                        Console.WriteLine("1. Volver al Menú Principal");
+                        Console.ReadLine();
+                    }
+                    break; 
+                case 3:
+                    Console.Clear();
+                    Console.WriteLine("==== Ver stock actual ====");
+                    Console.WriteLine("----------------------------------------");
+                    Console.WriteLine("Stock actual en Todos los Almacenes:");
+                    for (int i = 0; i < contador_alm; i++)
+                    {
+                        Console.WriteLine($"Producto {i + 1}: {nom_produc[i]}- Almacén: {nom_alamcen[i]}- Cantidad: {cantidad[i]}");
+                    }
+                    break;
+                case 4:
+                    break;
+            }
+            return getOpcion();
+        }
+        public static int getOpcion()
+        {
+            string opcionTexto = Console.ReadLine();
+            return int.Parse(opcionTexto);
+        }
+    }
+
