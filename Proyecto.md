@@ -21,7 +21,7 @@ internal class Pantallas
                         gestionar_productos();
                         break;
                     case 2:
-                        gestionar_alamacenes();
+                        gestionar_almacenes();
                         break;
                     case 3:
                         Agregar_Extraer_Productos();
